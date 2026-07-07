@@ -2,11 +2,11 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(function (_a) {
-    var _b, _c;
+    var _b;
     var mode = _a.mode;
     var env = loadEnv(mode, '.', '');
-    var repoName = (_c = (_b = env.GITHUB_REPOSITORY) === null || _b === void 0 ? void 0 : _b.split('/')[1]) !== null && _c !== void 0 ? _c : 'DailyCuisine2';
-    var base = mode === 'production' ? "/".concat(repoName, "/") : '/';
+    var repoName = (_b = env.GITHUB_REPOSITORY) === null || _b === void 0 ? void 0 : _b.split('/')[1];
+    var base = env.VITE_BASE || (mode === 'production' ? (repoName ? "/".concat(repoName, "/") : './') : '/');
     return {
         base: base,
         plugins: [
