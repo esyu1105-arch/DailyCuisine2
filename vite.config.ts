@@ -4,8 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  const repoName = env.GITHUB_REPOSITORY?.split('/')[1];
-  const base = env.VITE_BASE || (mode === 'production' ? (repoName ? `/${repoName}/` : './') : '/');
+  const base = env.VITE_BASE || (mode === 'production' ? './' : '/');
 
   return {
     base,
